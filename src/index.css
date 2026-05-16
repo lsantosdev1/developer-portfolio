@@ -1,0 +1,154 @@
+@import "tailwindcss";
+html {
+  scroll-behavior: smooth;
+}
+
+@theme {
+  /* Cores base atualizadas para maior contraste */
+  --color-dark-bg: #05070a;
+  --color-dark-card: #0a0f1a;
+  --color-neon-cyan: #00e5ff;
+  --color-neon-green: #00ffab;
+
+  /* Adicionando as fontes ao tema para usar como classe */
+  /* Use nomes diretos para as fontes */
+  --font-outfit: "Outfit", sans-serif;
+  --font-inter: "Inter Tight", sans-serif;
+  --font-syne: "Syne", sans-serif;
+}
+
+:root {
+  font-family: var(--font-inter), sans-serif;
+}
+
+body {
+  background-color: var(--color-dark-bg);
+  color: white;
+  margin: 0;
+  /* Garante que o scroll seja suave em todo o site */
+  scroll-behavior: smooth;
+}
+
+/* --- CAMADA DE COMPONENTES PADRONIZADOS --- */
+@layer components {
+  /* O Botão com o gradiente que faltava */
+  .btn-primary {
+    @apply bg-linear-to-r from-neon-cyan to-neon-green text-black font-black 
+           px-10 py-4 rounded-full uppercase text-xs tracking-widest 
+           transition-all duration-300 cursor-pointer shadow-[0_0_15px_rgba(0,229,255,0.3)];
+  }
+
+  .btn-primary:hover {
+    @apply scale-105 shadow-[0_0_25px_rgba(0,229,255,0.6)];
+  }
+
+  /* Tags dos cards padronizadas */
+  .tag-tech {
+    @apply text-[9px] font-bold text-neon-cyan border border-neon-cyan/20 
+           bg-neon-cyan/5 px-2 py-0.5 rounded uppercase;
+  }
+
+  /* Efeito de grade (grid) tecnológica no fundo */
+  .bg-grid-tech {
+    background-image:
+      linear-gradient(to bottom, transparent 95%, rgba(0, 229, 255, 0.03) 95%),
+      linear-gradient(to right, transparent 95%, rgba(0, 229, 255, 0.03) 95%);
+    background-size: 50px 50px;
+  }
+}
+
+/* --- UTILITÁRIOS DE BRILHO --- */
+
+/* Brilho externo neon (Glow) */
+.neon-glow {
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+}
+
+/* Borda que acende no hover */
+.neon-border-glow:hover {
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.1);
+  border-color: var(--color-neon-cyan) !important;
+}
+
+/* Brilho no texto (Glow Text) */
+.neon-text {
+  text-shadow: 0 0 12px rgba(0, 255, 171, 0.5);
+}
+
+/* --- ANIMAÇÕES --- */
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+@layer utilities {
+  .animate-shine {
+    background: linear-gradient(
+      to right,
+      #ffffff 20%,
+      var(--color-neon-cyan) 40%,
+      var(--color-neon-cyan) 60%,
+      #ffffff 80%
+    );
+    background-size: 200% auto;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: shine 4s linear infinite;
+  }
+
+  @keyframes shine {
+    to {
+      background-position: 200% center;
+    }
+  }
+}
+@layer utilities {
+  .bg-dark-bg {
+    background-color: var(--color-dark-bg);
+    /* Adicionando um leve gradiente radial fixo para dar mais vida ao fundo */
+    background-image: radial-gradient(
+      circle at 50% -20%,
+      rgba(0, 229, 255, 0.03) 0%,
+      transparent 50%
+    );
+  }
+
+  /* Keyframe que faz o feixe atravessar a tela e desaparecer nas pontas */
+  @keyframes beam-travel {
+    0% {
+      transform: translateX(-110%);
+      opacity: 0;
+    }
+    15% {
+      opacity: 1;
+    }
+    85% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(250%);
+      opacity: 0;
+    }
+  }
+
+  .beam-line {
+    position: absolute;
+    left: 0;
+    width: 700px; /* Comprimento do rastro de luz */
+    height: 1.5px; /* Espessura sutil */
+    pointer-events: none;
+    filter: blur(0.5px); /* Suaviza as bordas da linha */
+    animation: beam-travel linear infinite;
+    will-change: transform;
+  }
+}
