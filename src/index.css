@@ -152,3 +152,19 @@ body {
     will-change: transform;
   }
 }
+/* Correção de performance para o motor do Safari (WebKit) */
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Aplique isso na classe dos seus cards de projeto e especialidades */
+/* Substitua pelos seletores que você usou ou adicione direto na folha */
+.bg-dark-card,
+section,
+img {
+  transform: translateZ(0); /* Força o Safari a usar a placa de vídeo (GPU) */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; /* Evita que o Safari recalcule o elemento ao rolar */
+  will-change:
+    transform, opacity; /* Avisa o navegador para se preparar para animações */
+}
