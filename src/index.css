@@ -157,14 +157,46 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Aplique isso na classe dos seus cards de projeto e especialidades */
-/* Substitua pelos seletores que você usou ou adicione direto na folha */
-.bg-dark-card,
+/* ==========================================================================
+   ⚙️ CAMADA DE PERFORMANCE EXCLUSIVA PARA SAFARI/iOS (TAILWIND v4 COMPATIBLE)
+   ========================================================================== */
+
+/* Remove o serrilhado de fontes no WebKit */
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Força rolagem nativa e suave com aceleração de hardware no iOS */
+html,
+body {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Isolamos a aceleração 3D APENAS nos elementos grandes e pesados que realmente se mexem.
+  Isso impede o Safari de criar bilhões de camadas de texturas inúteis na memória RAM do iPhone.
+*/
 section,
-img {
-  transform: translateZ(0); /* Força o Safari a usar a placa de vídeo (GPU) */
+.bg-dark-card {
+  transform: translate3d(
+    0,
+    0,
+    0
+  ); /* Versão mais moderna e estável que o translateZ */
+  -webkit-transform: translate3d(0, 0, 0);
+
   backface-visibility: hidden;
-  -webkit-backface-visibility: hidden; /* Evita que o Safari recalcule o elemento ao rolar */
-  will-change:
-    transform, opacity; /* Avisa o navegador para se preparar para animações */
+  -webkit-backface-visibility: hidden;
+
+  perspective: 1000;
+  -webkit-perspective: 1000;
+
+  will-change: transform; /* Focamos apenas no movimento para economizar GPU */
+}
+
+/* Otimização de Renderização de Imagens:
+  Impedimos lags visuais travando o redimensionamento dinâmico no Safari durante o scroll.
+*/
+img {
+  content-visibility: auto; /* Só renderiza a imagem quando ela estiver perto de aparecer */
+  image-rendering: -webkit-optimize-contrast;
 }
