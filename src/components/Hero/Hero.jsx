@@ -17,7 +17,7 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl font-bold text-white uppercase leading-tight"
+            className="text-5xl md:text-7xl font-bold text-white  leading-tight"
           >
             Luan Santos
           </motion.h1>
@@ -26,7 +26,7 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-2xl md:text-4xl font-black tracking-tighter text-neon-cyan uppercase animate-shine"
+            className="text-2xl md:text-4xl font-black tracking-tighter text-neon-cyan animate-shine"
           >
             Full Stack Developer
           </motion.h2>

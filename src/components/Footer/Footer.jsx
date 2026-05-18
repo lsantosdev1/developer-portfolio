@@ -40,7 +40,7 @@ const Footer = () => {
     {
       id: "email",
       icon: <MdEmail size={22} />,
-      url: "mailto:lsantos2152@gmail.com",
+      url: "https://mail.google.com/mail/?view=cm&fs=1&to=lsantos2152@gmail.com",
       label: "E-mail",
     },
   ];
@@ -53,7 +53,7 @@ const Footer = () => {
           initial={{ y: 100 }}
           animate={{ y: 0 }}
           transition={{ type: "spring", stiffness: 260, damping: 25 }}
-          className="bg-dark-card/80 backdrop-blur-xl border border-white/10 px-4 sm:px-6 py-3.5 rounded-full flex items-center justify-between sm:justify-center gap-3 sm:gap-4 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)]"
+          className="bg-dark-card/80 backdrop-blur-xl border border-white/10 px-4 sm:px-6 py-3.5 rounded-full flex items-center justify-center gap-3 sm:gap-4 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)]"
         >
           {/* Mapeamento de todas as redes e contatos pedidas */}
           <div className="flex items-center gap-2 sm:gap-3.5">
@@ -81,7 +81,7 @@ const Footer = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-linear-to-r from-neon-cyan/10 to-neon-green/10 border border-neon-cyan/20 text-[10px] font-black text-gray-300 hover:text-white uppercase tracking-widest cursor-pointer hover:border-neon-cyan/5 transition-all duration-300"
-            onClick={() => window.open("/cv.pdf", "")}
+            onClick={() => window.open("/cv.pdf", "_blank")}
           >
             <FaFilePdf size={14} className="text-neon-cyan" />
             <span>CV</span>

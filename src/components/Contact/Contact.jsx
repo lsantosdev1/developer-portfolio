@@ -58,7 +58,7 @@ const Contact = () => {
             icon={FaEnvelope}
             title="E-mail"
             value="lsantos2152@gmail.com"
-            href="mailto:lsantos2152@gmail.com"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=lsantos2152@gmail.com"
             delay={0.1}
           />
           <ContactLink

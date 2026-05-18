@@ -117,7 +117,7 @@ const ProjectsGrid = () => {
         {/* Projeto 1: Barbearia */}
         <ProjectCard
           title="Pride Barbers Dashboard"
-          description="Sistema Full Stack de agendamento em tempo real com isolamento de dados e autenticação JWT."
+          description="Dashboard administrativo Full Stack desenvolvido com arquitetura modular e conceito Multi-Tenant para isolamento de dados. O sistema possui agendamento em tempo real com controle de concorrência, além de uma área restrita protegida por autenticação JWT e criptografia BCrypt. Conta com controle de permissões por nível de usuário (RBAC) e um painel analítico para gestão financeira dos profissionais."
           image="/projects/barbearia.png"
           icon={FaMobileAlt}
           tags={["React", "Node.js", "MongoDB"]}
@@ -128,7 +128,7 @@ const ProjectsGrid = () => {
         {/* Projeto 2: HamburgueriaZ2 */}
         <ProjectCard
           title="HamburgueriaZ2"
-          description="App Android nativo para gestão de pedidos, cálculos de preço e integração Firebase."
+          description="Aplicativo Android nativo desenvolvido em Java voltado para a automação e gestão operacional de pedidos. O sistema utiliza o ecossistema Firebase para autenticação e sincronização de dados em tempo real, integrando um motor de cálculo otimizado para precificação dinâmica e controle de fluxo de caixa, garantindo performance e estabilidade em ambientes mobile"
           image="/projects/hamburgueria.png"
           icon={FaCode}
           tags={["Java", "Android", "Firebase"]}
@@ -139,7 +139,7 @@ const ProjectsGrid = () => {
         {/* Projeto 3: DevFinder */}
         <ProjectCard
           title="DevFinder"
-          description="Uma ferramenta de busca que se integra em tempo real com a API Pública do GitHub."
+          description="Aplicação front-end integrada em tempo real à API pública do GitHub para busca e resumo visual de perfis de desenvolvedores. Desenvolvida com React e TypeScript, utiliza gerenciamento de estados síncronos e assíncronos para tratar carregamentos e erros, garantindo uma arquitetura de componentes limpa e UX fluida."
           image="/projects/devfinder.png"
           icon={FaSearch}
           tags={["React", "TypeScript", "Tailwind CSS", "API REST"]}
