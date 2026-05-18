@@ -1,7 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const BeamCurve = ({ color, delay, duration, path }) => {
+  const [isIOS, setIsIOS] = useState(false);
+
+  useEffect(() => {
+    // Detecta se o dispositivo é um iPhone, iPad ou iPod
+    const checkIsIOS =
+      /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+    setIsIOS(checkIsIOS);
+  }, []);
+
+  // Se for iOS (iPhone/Safari), o React não renderiza o componente, poupando a memória do aparelho.
+  // Se for Android ou Desktop, o código ignora esse 'if' e renderiza normalmente!
+  if (isIOS) {
+    return null;
+  }
+
   return (
     <svg
       className="fixed inset-0 w-full h-full pointer-events-none z-0"
@@ -20,9 +37,9 @@ const BeamCurve = ({ color, delay, duration, path }) => {
         strokeLinecap="round"
         initial={{ pathLength: 0, pathOffset: 0, opacity: 0 }}
         animate={{
-          pathLength: [0.2, 0.2, 0.1], // Tamanho do feixe
-          pathOffset: [0, 1], // Percorre o caminho de 0 a 100%
-          opacity: [0, 1, 1, 0], // Surge e some
+          pathLength: [0.2, 0.2, 0.1],
+          pathOffset: [0, 1],
+          opacity: [0, 1, 1, 0],
         }}
         transition={{
           duration: duration,
@@ -31,7 +48,7 @@ const BeamCurve = ({ color, delay, duration, path }) => {
           ease: "circIn",
         }}
         style={{
-          filter: `drop-shadow(0 0 8px ${color})`, // Brilho neon intenso
+          filter: `drop-shadow(0 0 8px ${color})`,
         }}
       />
     </svg>
