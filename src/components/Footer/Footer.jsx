@@ -7,6 +7,7 @@ import {
   FaFilePdf,
   FaArrowUp,
 } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 
 const Footer = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -17,72 +18,97 @@ const Footer = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const links = [
+    {
+      id: "github",
+      icon: <FaGithub size={20} />,
+      url: "https://github.com/lsantosdev1",
+      label: "GitHub",
+    },
+    {
+      id: "linkedin",
+      icon: <FaLinkedin size={20} />,
+      url: "https://www.linkedin.com/in/1luansantosdev/?skipRedirect=true",
+      label: "LinkedIn",
+    },
+    {
+      id: "whatsapp",
+      icon: <FaWhatsapp size={20} />,
+      url: "https://wa.me/5521993884424",
+      label: "WhatsApp",
+    },
+    {
+      id: "email",
+      icon: <MdEmail size={22} />,
+      url: "mailto:lsantos2152@gmail.com",
+      label: "E-mail",
+    },
+  ];
+
   return (
     <>
-      {/* 1. BARRA FLUTUANTE CENTRAL */}
-      <footer className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[90%] md:w-max">
+      {/* 1. BARRA FLUTUANTE CENTRAL (DOCK COM TODOS OS MEIOS DE CONTATO) */}
+      <footer className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[92%] sm:w-max max-w-2xl">
         <motion.div
           initial={{ y: 100 }}
           animate={{ y: 0 }}
-          className="bg-dark-card/80 backdrop-blur-xl border border-white/10 px-6 md:px-8 py-4 rounded-full flex items-center justify-between md:justify-center gap-4 md:gap-6 shadow-2xl"
+          transition={{ type: "spring", stiffness: 260, damping: 25 }}
+          className="bg-dark-card/80 backdrop-blur-xl border border-white/10 px-4 sm:px-6 py-3.5 rounded-full flex items-center justify-between sm:justify-center gap-3 sm:gap-4 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)]"
         >
-          <div className="flex items-center gap-4 md:gap-6">
-            <a
-              href="https://github.com/lsantosdev1"
-              target="_blank"
-              rel="noreferrer"
-              className="text-gray-400 hover:text-neon-cyan transition-all"
-            >
-              <FaGithub size={20} />
-            </a>
-            <a
-              href="#"
-              target="_blank"
-              rel="noreferrer"
-              className="text-gray-400 hover:text-neon-cyan transition-all"
-            >
-              <FaLinkedin size={20} />
-            </a>
-            <div className="w-px h-4 bg-gray-800" />
+          {/* Mapeamento de todas as redes e contatos pedidas */}
+          <div className="flex items-center gap-2 sm:gap-3.5">
+            {links.map((link) => (
+              <motion.a
+                key={link.id}
+                href={link.url}
+                target="_blank"
+                rel="noreferrer"
+                title={link.label}
+                whileHover={{ scale: 1.18, y: -4 }}
+                whileTap={{ scale: 0.95 }}
+                className="text-gray-400 hover:text-neon-cyan transition-colors duration-300 p-2 rounded-full hover:bg-white/5 flex items-center justify-center"
+              >
+                {link.icon}
+              </motion.a>
+            ))}
           </div>
 
-          <button
-            className="flex items-center gap-2 text-[10px] font-black text-gray-400 hover:text-white uppercase tracking-widest cursor-pointer"
-            onClick={() => window.open("/cv.pdf", "_blank")}
+          {/* Linha separadora discreta */}
+          <div className="w-px h-5 bg-gray-800 self-center mx-1" />
+
+          {/* Botão de Currículo Integrado ao Tema */}
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-linear-to-r from-neon-cyan/10 to-neon-green/10 border border-neon-cyan/20 text-[10px] font-black text-gray-300 hover:text-white uppercase tracking-widest cursor-pointer hover:border-neon-cyan/5 transition-all duration-300"
+            onClick={() => window.open("/cv.pdf", "")}
           >
-            <FaFilePdf size={16} className="text-neon-cyan" />
-            <span className="hidden xs:inline">Currículo</span>
-          </button>
+            <FaFilePdf size={14} className="text-neon-cyan" />
+            <span>CV</span>
+          </motion.button>
         </motion.div>
       </footer>
 
-      {/* 2. BOTÕES LATERAIS (WhatsApp e Voltar ao Topo) */}
-      <div className="fixed bottom-24 md:bottom-8 right-6 md:right-8 flex flex-col gap-4 z-50">
-        {/* Voltar ao Topo */}
+      {/* 2. BOTÃO AUXILIAR: VOLTAR AO TOPO (LATERIAL DIREITA) */}
+      <div className="fixed bottom-24 sm:bottom-8 right-6 z-50">
         <AnimatePresence>
           {showBackToTop && (
             <motion.button
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0, opacity: 0 }}
+              initial={{ scale: 0, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0, opacity: 0, y: 20 }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="bg-dark-card p-3 rounded-xl border border-white/10 text-gray-400 hover:text-neon-cyan shadow-lg cursor-pointer"
+              className="bg-dark-card/90 backdrop-blur-md p-3.5 rounded-xl border border-white/10 text-gray-400 hover:text-neon-cyan shadow-xl cursor-pointer transition-colors duration-300 flex items-center justify-center group"
             >
-              <FaArrowUp size={20} />
+              <FaArrowUp
+                size={18}
+                className="group-hover:-translate-y-0.5 transition-transform"
+              />
             </motion.button>
           )}
         </AnimatePresence>
-
-        {/* WhatsApp - Reposicionado para não colidir com o dock no mobile */}
-        <motion.a
-          href="https://wa.me/5521993884424"
-          target="_blank"
-          rel="noreferrer"
-          whileHover={{ scale: 1.1 }}
-          className="bg-dark-card p-4 rounded-2xl border border-neon-cyan/30 neon-glow text-neon-cyan shadow-lg"
-        >
-          <FaWhatsapp size={24} />
-        </motion.a>
       </div>
     </>
   );
