@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import {
   FaSearch,
+  FaLaptopCode,
   FaMobileAlt,
   FaCode,
   FaServer,
@@ -145,6 +146,16 @@ const ProjectsGrid = () => {
           tags={["React", "TypeScript", "Tailwind CSS", "API REST"]}
           githubLink="https://github.com/lsantosdev1/Dev-finder"
           deployLink="https://dev-finder-rosy.vercel.app/"
+        />
+        {/* Projeto 3: Açaí Landpage */}
+        <ProjectCard
+          title="Açaí Landpage"
+          description="Aplicação interativa de e-commerce e automação de pedidos focada na experiência do usuário (UX/UI). Desenvolvido com React, o projeto conta com gerenciamento dinâmico de estado para a montagem customizada de produtos e controle do carrinho de compras, utilizando animações fluidas para reatividade em tempo real e alta conversão."
+          image="/projects/acailt.png"
+          icon={FaLaptopCode}
+          tags={["JavaScript", "React", "Tailwind CSS", "Framer Motion"]}
+          githubLink="https://github.com/lsantosdev1/acaiLT"
+          deployLink="https://acai-lt.vercel.app/"
         />
       </div>
     </section>
