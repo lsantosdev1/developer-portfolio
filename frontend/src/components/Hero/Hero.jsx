@@ -40,10 +40,12 @@ const Hero = () => {
           viewport={{ once: true }}
           className="max-w-xl text-gray-400 text-lg leading-relaxed font-medium"
         >
-          Projetando o amanhã com código limpo, performance extrema e foco na
-          experiência do usuário. <br className="hidden md:block" />
-          Com foco em <span className="text-white font-bold">performance</span>,
-          escalabilidade e arquitetura limpa.
+          Transformando problemas complexos em soluções eficientes através de
+          código limpo, performance extrema e arquitetura escalável.{" "}
+          <br className="hidden md:block" />
+          Desenvolvendo software de alto impacto com foco em{" "}
+          <span className="text-white font-bold">resultados</span>,
+          escalabilidade e experiência do usuário.
         </motion.p>
 
         {/* Ações (CTAs) - mt-2 para dar um leve respiro extra como no exemplo */}

@@ -90,7 +90,7 @@ const Footer = () => {
       </footer>
 
       {/* 2. BOTÃO AUXILIAR: VOLTAR AO TOPO (LATERIAL DIREITA) */}
-      <div className="fixed bottom-24 sm:bottom-8 right-6 z-50">
+      <div className="fixed bottom-40 sm:bottom-8 right-6 z-50">
         <AnimatePresence>
           {showBackToTop && (
             <motion.button
